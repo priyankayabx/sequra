@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 54,
+            "activePatchIndex": 72,
             "patches": [
                 {
                     "date": 1677402155090,
@@ -224,6 +224,78 @@
                 {
                     "date": 1677405344164,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,15 +5,15 @@\n     def self.disbursement_frequency(disbursement_frequency=nil)\n         return ((disbursement_frequency.to_i==1) ? \"Weekly\" : \"Monthly\")\n     end\n \n-    def self.sequra_fee_structure(order_value)\n+    def self.sequra_commissionfee_structure(order_value)\n \n         sequra_fee_percentage = case order_value\n         when 0..50 then 1\n         when 50..300 then 0.95\n         when order_value > 300 then 0.8\n         end \n         return sequra_fee_percentage\n-        \n+\n     end\n end\n"
+                },
+                {
+                    "date": 1677406668589,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,13 +1,14 @@\n class Merchant < ApplicationRecord\n+    belongs_to :network\n     SEQURA_MONTHLY_FEE = 100\n \n \n     def self.disbursement_frequency(disbursement_frequency=nil)\n         return ((disbursement_frequency.to_i==1) ? \"Weekly\" : \"Monthly\")\n     end\n \n-    def self.sequra_commissionfee_structure(order_value)\n+    def self.sequra_commission_fee_structure(order_value)\n \n         sequra_fee_percentage = case order_value\n         when 0..50 then 1\n         when 50..300 then 0.95\n"
+                },
+                {
+                    "date": 1677406674662,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n class Merchant < ApplicationRecord\n-    belongs_to :network\n+    belongs_to :Order\n     SEQURA_MONTHLY_FEE = 100\n \n \n     def self.disbursement_frequency(disbursement_frequency=nil)\n"
+                },
+                {
+                    "date": 1677406918119,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,7 @@\n class Merchant < ApplicationRecord\n-    belongs_to :Order\n+    has_many :merchants\n+    belongs_to :order\n     SEQURA_MONTHLY_FEE = 100\n \n \n     def self.disbursement_frequency(disbursement_frequency=nil)\n"
+                },
+                {
+                    "date": 1677406924253,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,6 @@\n class Merchant < ApplicationRecord\n-    has_many :merchants\n-    belongs_to :order\n+    has_many :order\n     SEQURA_MONTHLY_FEE = 100\n \n \n     def self.disbursement_frequency(disbursement_frequency=nil)\n"
+                },
+                {
+                    "date": 1677413871915,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n class Merchant < ApplicationRecord\n-    has_many :order\n+    has_many :orders\n     SEQURA_MONTHLY_FEE = 100\n \n \n     def self.disbursement_frequency(disbursement_frequency=nil)\n@@ -8,9 +8,9 @@\n     end\n \n     def self.sequra_commission_fee_structure(order_value)\n \n-        sequra_fee_percentage = case order_value\n+        sequra_fee_percentage = case order_value.to_i\n         when 0..50 then 1\n         when 50..300 then 0.95\n         when order_value > 300 then 0.8\n         end \n"
+                },
+                {
+                    "date": 1677413895831,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n     end\n \n     def self.sequra_commission_fee_structure(order_value)\n \n-        sequra_fee_percentage = case order_value.to_i\n+        sequra_fee_percentage = case order_value\n         when 0..50 then 1\n         when 50..300 then 0.95\n         when order_value > 300 then 0.8\n         end \n"
+                },
+                {
+                    "date": 1677413905496,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n         return ((disbursement_frequency.to_i==1) ? \"Weekly\" : \"Monthly\")\n     end\n \n     def self.sequra_commission_fee_structure(order_value)\n-\n+puts \"*******order_value\"\n         sequra_fee_percentage = case order_value\n         when 0..50 then 1\n         when 50..300 then 0.95\n         when order_value > 300 then 0.8\n"
+                },
+                {
+                    "date": 1677413911619,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n         return ((disbursement_frequency.to_i==1) ? \"Weekly\" : \"Monthly\")\n     end\n \n     def self.sequra_commission_fee_structure(order_value)\n-puts \"*******order_value\"\n+puts \"*******order_value******#{}\"\n         sequra_fee_percentage = case order_value\n         when 0..50 then 1\n         when 50..300 then 0.95\n         when order_value > 300 then 0.8\n"
+                },
+                {
+                    "date": 1677413922827,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,14 +7,15 @@\n         return ((disbursement_frequency.to_i==1) ? \"Weekly\" : \"Monthly\")\n     end\n \n     def self.sequra_commission_fee_structure(order_value)\n-puts \"*******order_value******#{}\"\n+puts \"*******order_value******#{order_value}\"\n         sequra_fee_percentage = case order_value\n         when 0..50 then 1\n         when 50..300 then 0.95\n         when order_value > 300 then 0.8\n         end \n+        puts \"*******order_value******#{order_value}\"\n         return sequra_fee_percentage\n \n     end\n end\n"
+                },
+                {
+                    "date": 1677413957790,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,14 +8,19 @@\n     end\n \n     def self.sequra_commission_fee_structure(order_value)\n puts \"*******order_value******#{order_value}\"\n-        sequra_fee_percentage = case order_value\n+        sequra_fee_percentage = \n+        \n+        \n+        \n+        \n+        case order_value\n         when 0..50 then 1\n         when 50..300 then 0.95\n         when order_value > 300 then 0.8\n         end \n-        puts \"*******order_value******#{order_value}\"\n+        puts \"*******sequra_fee_percentage******#{sequra_fee_percentage}\"\n         return sequra_fee_percentage\n \n     end\n end\n"
+                },
+                {
+                    "date": 1677413966386,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,12 +9,13 @@\n \n     def self.sequra_commission_fee_structure(order_value)\n puts \"*******order_value******#{order_value}\"\n         sequra_fee_percentage = \n+        if  0..50\n+            \n         \n         \n         \n-        \n         case order_value\n         when 0..50 then 1\n         when 50..300 then 0.95\n         when order_value > 300 then 0.8\n"
+                },
+                {
+                    "date": 1677413973049,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,10 @@\n     def self.sequra_commission_fee_structure(order_value)\n puts \"*******order_value******#{order_value}\"\n         sequra_fee_percentage = \n         if  0..50\n-            \n+        elsif \n+        end\n         \n         \n         \n         case order_value\n"
+                },
+                {
+                    "date": 1677413984662,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,8 +10,9 @@\n     def self.sequra_commission_fee_structure(order_value)\n puts \"*******order_value******#{order_value}\"\n         sequra_fee_percentage = \n         if  0..50\n+        elsif 50..300\n         elsif \n         end\n         \n         \n"
+                },
+                {
+                    "date": 1677413991947,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n puts \"*******order_value******#{order_value}\"\n         sequra_fee_percentage = \n         if  0..50\n         elsif 50..300\n-        elsif \n+        elsif order_value > 300\n         end\n         \n         \n         \n"
+                },
+                {
+                    "date": 1677414003070,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,10 +10,12 @@\n     def self.sequra_commission_fee_structure(order_value)\n puts \"*******order_value******#{order_value}\"\n         sequra_fee_percentage = \n         if  0..50\n+            sequra_fee_percentage = 1\n         elsif 50..300\n         elsif order_value > 300\n+\n         end\n         \n         \n         \n"
+                },
+                {
+                    "date": 1677414009059,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,8 +12,9 @@\n         sequra_fee_percentage = \n         if  0..50\n             sequra_fee_percentage = 1\n         elsif 50..300\n+            sequra_fee_percentage = 0.95\n         elsif order_value > 300\n \n         end\n         \n"
+                },
+                {
+                    "date": 1677414014861,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n             sequra_fee_percentage = 1\n         elsif 50..300\n             sequra_fee_percentage = 0.95\n         elsif order_value > 300\n-\n+            sequra_fee_percentage = 0.8\n         end\n         \n         \n         \n"
+                },
+                {
+                    "date": 1677414040366,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,17 +16,8 @@\n             sequra_fee_percentage = 0.95\n         elsif order_value > 300\n             sequra_fee_percentage = 0.8\n         end\n-        \n-        \n-        \n-        case order_value\n-        when 0..50 then 1\n-        when 50..300 then 0.95\n-        when order_value > 300 then 0.8\n-        end \n-        puts \"*******sequra_fee_percentage******#{sequra_fee_percentage}\"\n         return sequra_fee_percentage\n \n     end\n end\n"
                 }
             ],
             "date": 1677402155090,

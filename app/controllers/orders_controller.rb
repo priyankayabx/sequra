@@ -13,6 +13,7 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = Order.new
+    @merchant = Merchant.all
   end
 
   # GET /orders/1/edit
@@ -22,9 +23,14 @@ class OrdersController < ApplicationController
   # POST /orders or /orders.json
   def create
     @order = Order.new(order_params)
-
+    @order.status = 1
+    puts "**@order.amount********#{@order.amount}"
+    @order.comission_percentage = Merchant.sequra_commission_fee_structure(@order.amount)
+    puts "**@order.comission_percentage********#{@order.comission_percentage}"
     respond_to do |format|
+
       if @order.save
+
         format.html { redirect_to order_url(@order), notice: "Order was successfully created." }
         format.json { render :show, status: :created, location: @order }
       else

@@ -1,0 +1,134 @@
+{
+    "sourceFile": "app/models/order.rb",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 29,
+            "patches": [
+                {
+                    "date": 1677406647254,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1677406653546,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,3 +1,3 @@\n class Order < ApplicationRecord\n-    has_many :users\n+    has_many :Merchan\n end\n"
+                },
+                {
+                    "date": 1677406683241,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,3 +1,3 @@\n class Order < ApplicationRecord\n-    has_many :Merchan\n+    has_many :merchants\n end\n"
+                },
+                {
+                    "date": 1677406915355,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,3 +1,3 @@\n class Order < ApplicationRecord\n-    has_many :merchants\n+    \n end\n"
+                },
+                {
+                    "date": 1677406929788,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,3 +1,4 @@\n class Order < ApplicationRecord\n     \n+    belongs_to :\n end\n"
+                },
+                {
+                    "date": 1677406934850,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,4 @@\n class Order < ApplicationRecord\n-    \n-    belongs_to :\n+\n+    belongs_to :merchant\n end\n"
+                },
+                {
+                    "date": 1677406959347,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,3 @@\n class Order < ApplicationRecord\n-\n     belongs_to :merchant\n end\n"
+                },
+                {
+                    "date": 1677407036311,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,3 +1,6 @@\n class Order < ApplicationRecord\n     belongs_to :merchant\n+\n+    def self.order_status\n+        \n end\n"
+                },
+                {
+                    "date": 1677407042940,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,7 @@\n class Order < ApplicationRecord\n     belongs_to :merchant\n \n     def self.order_status\n-        \n+        o\n+    end\n end\n"
+                },
+                {
+                    "date": 1677407048442,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n class Order < ApplicationRecord\n     belongs_to :merchant\n \n     def self.order_status\n-        o\n+        order_status = \n     end\n end\n"
+                },
+                {
+                    "date": 1677407059060,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,12 @@\n class Order < ApplicationRecord\n     belongs_to :merchant\n \n     def self.order_status\n-        order_status = \n+        order_status = case order_value\n+        when 0..50 then 1\n+        when 50..300 then 0.95\n+        when order_value > 300 then 0.8\n+        end \n+        return sequra_fee_percentage\n     end\n end\n"
+                },
+                {
+                    "date": 1677407069862,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,12 +1,7 @@\n class Order < ApplicationRecord\n     belongs_to :merchant\n \n     def self.order_status\n-        order_status = case order_value\n-        when 0..50 then 1\n-        when 50..300 then 0.95\n-        when order_value > 300 then 0.8\n-        end \n-        return sequra_fee_percentage\n+        order_status =\n     end\n end\n"
+                },
+                {
+                    "date": 1677407081104,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,6 @@\n class Order < ApplicationRecord\n     belongs_to :merchant\n+    Requested\n \n-    def self.order_status\n-        order_status =\n-    end\n+   \n end\n"
+                },
+                {
+                    "date": 1677407089505,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n class Order < ApplicationRecord\n     belongs_to :merchant\n-    Requested\n+    ORDER_REQUESTED\n \n    \n end\n"
+                },
+                {
+                    "date": 1677407095410,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n class Order < ApplicationRecord\n     belongs_to :merchant\n-    ORDER_REQUESTED\n+    ORDER_REQUESTE\n \n    \n end\n"
+                },
+                {
+                    "date": 1677407100458,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n class Order < ApplicationRecord\n     belongs_to :merchant\n-    ORDER_REQUESTE\n+    ORDER_REQUESTED = 1\n \n    \n end\n"
+                },
+                {
+                    "date": 1677407111148,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n class Order < ApplicationRecord\n     belongs_to :merchant\n-    ORDER_REQUESTED = 1\n+    ORDER_REQUESTED = \n \n    \n end\n"
+                },
+                {
+                    "date": 1677407116524,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,7 @@\n class Order < ApplicationRecord\n     belongs_to :merchant\n-    ORDER_REQUESTED = \n+    ORDER_REQUESTED = 1\n+    Order\n \n    \n end\n"
+                },
+                {
+                    "date": 1677407124983,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n class Order < ApplicationRecord\n     belongs_to :merchant\n     ORDER_REQUESTED = 1\n-    Order\n+    ORDER_DISBURSED\n \n    \n end\n"
+                },
+                {
+                    "date": 1677407139227,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,9 @@\n class Order < ApplicationRecord\n     belongs_to :merchant\n     ORDER_REQUESTED = 1\n-    ORDER_DISBURSED\n+    ORDER_DISBURSED = 2\n+    ORDER_COMPLETED = 3\n+    \n \n    \n end\n"
+                },
+                {
+                    "date": 1677407147186,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,8 +2,8 @@\n     belongs_to :merchant\n     ORDER_REQUESTED = 1\n     ORDER_DISBURSED = 2\n     ORDER_COMPLETED = 3\n-    \n+    ORDER_CLOSED = 4\n \n    \n end\n"
+                },
+                {
+                    "date": 1677407152385,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,7 +3,8 @@\n     ORDER_REQUESTED = 1\n     ORDER_DISBURSED = 2\n     ORDER_COMPLETED = 3\n     ORDER_CLOSED = 4\n+    ORDER\n \n    \n end\n"
+                },
+                {
+                    "date": 1677407158367,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,8 +3,8 @@\n     ORDER_REQUESTED = 1\n     ORDER_DISBURSED = 2\n     ORDER_COMPLETED = 3\n     ORDER_CLOSED = 4\n-    ORDER\n+    ORDER_CANCELLED = 5\n \n    \n end\n"
+                },
+                {
+                    "date": 1677408055570,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,6 +5,8 @@\n     ORDER_COMPLETED = 3\n     ORDER_CLOSED = 4\n     ORDER_CANCELLED = 5\n \n+    def comission_percentage\n+\n    \n end\n"
+                },
+                {
+                    "date": 1677408061342,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,8 +5,8 @@\n     ORDER_COMPLETED = 3\n     ORDER_CLOSED = 4\n     ORDER_CANCELLED = 5\n \n-    def comission_percentage\n+    def comission_percentage(order_value)\n \n    \n end\n"
+                },
+                {
+                    "date": 1677408159776,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,8 +5,8 @@\n     ORDER_COMPLETED = 3\n     ORDER_CLOSED = 4\n     ORDER_CANCELLED = 5\n \n-    def comission_percentage(order_value)\n+    def \n \n    \n end\n"
+                },
+                {
+                    "date": 1677408189283,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,8 +5,8 @@\n     ORDER_COMPLETED = 3\n     ORDER_CLOSED = 4\n     ORDER_CANCELLED = 5\n \n-    def \n+    \n \n    \n end\n"
+                },
+                {
+                    "date": 1677410970450,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,8 +5,8 @@\n     ORDER_COMPLETED = 3\n     ORDER_CLOSED = 4\n     ORDER_CANCELLED = 5\n \n-    \n+    def \n \n    \n end\n"
+                },
+                {
+                    "date": 1677410976343,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,8 +6,8 @@\n     ORDER_CLOSED = 4\n     ORDER_CANCELLED = 5\n \n     def net_amount\n-        \n+        e\n \n    \n end\n"
+                },
+                {
+                    "date": 1677414327754,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,9 @@\n        return order.amount.to_f-(order.amount.to_f*order.comission_percentage.to_f/100)\n     end\n \n     def self.comission_amount()\n-        \n+        e\n \n     \n \n    \n"
+                }
+            ],
+            "date": 1677406647254,
+            "name": "Commit-0",
+            "content": "class Order < ApplicationRecord\n    has_many :users\nend\n"
+        }
+    ]
+}

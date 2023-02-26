@@ -1,0 +1,46 @@
+{
+    "sourceFile": "app/views/orders/show.html.erb",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 7,
+            "patches": [
+                {
+                    "date": 1677407993556,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1677408001898,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n </p>\n \n <p>\n   <strong>Status:</strong>\n-  <%= order_status(order_status)@order.status %>\n+  <%= order_status(@order.status) %>\n </p>\n \n <p>\n   <strong>Amount:</strong>\n"
+                },
+                {
+                    "date": 1677411006507,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n <p>\n   <strong>Amount:</strong>\n   <%= @order.amount %>\n </p>\n-\n+Merchant.sequra_commission_fee_structure(@order.amount)\n <p>\n   <strong>Comission percentage:</strong>\n   <%= @order.comission_percentage %>\n </p>\n"
+                },
+                {
+                    "date": 1677411014506,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,12 +13,16 @@\n <p>\n   <strong>Amount:</strong>\n   <%= @order.amount %>\n </p>\n-Merchant.sequra_commission_fee_structure(@order.amount)\n+\n <p>\n   <strong>Comission percentage:</strong>\n   <%= @order.comission_percentage %>\n </p>\n+<p>\n+  <strong>Comission percentage:</strong>\n+  <%= @order.comission_percentage %>\n+</p>\n \n <%= link_to 'Edit', edit_order_path(@order) %> |\n <%= link_to 'Back', orders_path %>\n"
+                },
+                {
+                    "date": 1677411031125,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,9 +19,9 @@\n   <strong>Comission percentage:</strong>\n   <%= @order.comission_percentage %>\n </p>\n <p>\n-  <strong>Comission percentage:</strong>\n+  <strong>Net Amount:</strong>\n   <%= @order.comission_percentage %>\n </p>\n \n <%= link_to 'Edit', edit_order_path(@order) %> |\n"
+                },
+                {
+                    "date": 1677411043284,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,9 +20,9 @@\n   <%= @order.comission_percentage %>\n </p>\n <p>\n   <strong>Net Amount:</strong>\n-  <%= @order.comission_percentage %>\n+  <%= net_a %>\n </p>\n \n <%= link_to 'Edit', edit_order_path(@order) %> |\n <%= link_to 'Back', orders_path %>\n"
+                },
+                {
+                    "date": 1677411054549,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,9 +20,9 @@\n   <%= @order.comission_percentage %>\n </p>\n <p>\n   <strong>Net Amount:</strong>\n-  <%= net_a %>\n+  <%= net_amount(@order) %>\n </p>\n \n <%= link_to 'Edit', edit_order_path(@order) %> |\n <%= link_to 'Back', orders_path %>\n"
+                },
+                {
+                    "date": 1677411140261,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,9 +20,9 @@\n   <%= @order.comission_percentage %>\n </p>\n <p>\n   <strong>Net Amount:</strong>\n-  <%= Ordernet_amount(@order) %>\n+  <%= Order.net_amount(@order) %>\n </p>\n \n <%= link_to 'Edit', edit_order_path(@order) %> |\n <%= link_to 'Back', orders_path %>\n"
+                }
+            ],
+            "date": 1677407993556,
+            "name": "Commit-0",
+            "content": "<p id=\"notice\"><%= notice %></p>\n\n<p>\n  <strong>Merchant:</strong>\n  <%= @order.merchant_id %>\n</p>\n\n<p>\n  <strong>Status:</strong>\n  <%= order_status(order_status)@order.status %>\n</p>\n\n<p>\n  <strong>Amount:</strong>\n  <%= @order.amount %>\n</p>\n\n<p>\n  <strong>Comission percentage:</strong>\n  <%= @order.comission_percentage %>\n</p>\n\n<%= link_to 'Edit', edit_order_path(@order) %> |\n<%= link_to 'Back', orders_path %>\n"
+        }
+    ]
+}

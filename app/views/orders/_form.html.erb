@@ -13,23 +13,16 @@
 
   <div class="field">
     <%= form.label :merchant_id %>
-    <%= form.number_field :merchant_id %>
+     <%= form.select :merchant_id, @merchant.map { |t| [t.name, t.id]}, {}%>
   </div>
 
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.number_field :status %>
-  </div>
 
   <div class="field">
     <%= form.label :amount %>
     <%= form.text_field :amount %>
   </div>
 
-  <div class="field">
-    <%= form.label :comission_percentage %>
-    <%= form.text_field :comission_percentage %>
-  </div>
+ 
 
   <div class="actions">
     <%= form.submit %>

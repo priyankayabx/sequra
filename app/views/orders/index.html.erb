@@ -9,6 +9,8 @@
       <th>Status</th>
       <th>Amount</th>
       <th>Comission percentage</th>
+      <th>Comission Amount</th>
+      <th>Net Amount</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,10 +18,12 @@
   <tbody>
     <% @orders.each do |order| %>
       <tr>
-        <td><%= order.merchant_id %></td>
-        <td><%= order.status %></td>
+        <td><%= order.merchant.name %></td>
+        <td><%= order_status(order.status) %></td>
         <td><%= order.amount %></td>
         <td><%= order.comission_percentage %></td>
+        <td><%= Order.order_amount_calculation(order)['comission'].round(2) %></td>
+        <td><%=  Order.order_amount_calculation(order)['net_amount'].round(2) %></td>
         <td><%= link_to 'Show', order %></td>
         <td><%= link_to 'Edit', edit_order_path(order) %></td>
         <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -1,0 +1,38 @@
+{
+    "sourceFile": "app/views/orders/index.html.erb",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 5,
+            "patches": [
+                {
+                    "date": 1677406990475,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1677407386680,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,10 +15,10 @@\n \n   <tbody>\n     <% @orders.each do |order| %>\n       <tr>\n-        <td><%= order.merchant. %></td>\n-        <td><%= order.status %></td>\n+        <td><%= order.merchant.name %></td>\n+        <td><%= order_statusorder.status %></td>\n         <td><%= order.amount %></td>\n         <td><%= order.comission_percentage %></td>\n         <td><%= link_to 'Show', order %></td>\n         <td><%= link_to 'Edit', edit_order_path(order) %></td>\n"
+                },
+                {
+                    "date": 1677412496822,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,17 +8,18 @@\n       <th>Merchant</th>\n       <th>Status</th>\n       <th>Amount</th>\n       <th>Comission percentage</th>\n+      <th>Comission percentage</th>\n       <th colspan=\"3\"></th>\n     </tr>\n   </thead>\n \n   <tbody>\n     <% @orders.each do |order| %>\n       <tr>\n         <td><%= order.merchant.name %></td>\n-        <td><%= order_statusorder.status %></td>\n+        <td><%= order_status(order.status) %></td>\n         <td><%= order.amount %></td>\n         <td><%= order.comission_percentage %></td>\n         <td><%= link_to 'Show', order %></td>\n         <td><%= link_to 'Edit', edit_order_path(order) %></td>\n"
+                },
+                {
+                    "date": 1677412503466,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n       <th>Merchant</th>\n       <th>Status</th>\n       <th>Amount</th>\n       <th>Comission percentage</th>\n-      <th>Comission percentage</th>\n+      <th>Net Amount</th>\n       <th colspan=\"3\"></th>\n     </tr>\n   </thead>\n \n"
+                },
+                {
+                    "date": 1677412510793,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,9 +20,9 @@\n         <td><%= order.merchant.name %></td>\n         <td><%= order_status(order.status) %></td>\n         <td><%= order.amount %></td>\n         <td><%= order.comission_percentage %></td>\n-        \n+        <>\n         <td><%= link_to 'Show', order %></td>\n         <td><%= link_to 'Edit', edit_order_path(order) %></td>\n         <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>\n       </tr>\n"
+                },
+                {
+                    "date": 1677414704537,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n       <th>Merchant</th>\n       <th>Status</th>\n       <th>Amount</th>\n       <th>Comission percentage</th>\n-      \n+      <>\n       <th>Net Amount</th>\n       <th colspan=\"3\"></th>\n     </tr>\n   </thead>\n"
+                }
+            ],
+            "date": 1677406990475,
+            "name": "Commit-0",
+            "content": "<p id=\"notice\"><%= notice %></p>\n\n<h1>Orders</h1>\n\n<table>\n  <thead>\n    <tr>\n      <th>Merchant</th>\n      <th>Status</th>\n      <th>Amount</th>\n      <th>Comission percentage</th>\n      <th colspan=\"3\"></th>\n    </tr>\n  </thead>\n\n  <tbody>\n    <% @orders.each do |order| %>\n      <tr>\n        <td><%= order.merchant. %></td>\n        <td><%= order.status %></td>\n        <td><%= order.amount %></td>\n        <td><%= order.comission_percentage %></td>\n        <td><%= link_to 'Show', order %></td>\n        <td><%= link_to 'Edit', edit_order_path(order) %></td>\n        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>\n      </tr>\n    <% end %>\n  </tbody>\n</table>\n\n<br>\n\n<%= link_to 'New Order', new_order_path %>\n"
+        }
+    ]
+}

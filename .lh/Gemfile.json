@@ -3,11 +3,15 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 1,
             "patches": [
                 {
                     "date": 1677405865340,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1677406024577,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -56,9 +56,6 @@\n   gem 'selenium-webdriver'\n   # Easy installation and use of chromedriver to run system tests with Chrome\n   gem 'chromedriver-helper'\n end\n-gem 'jwt'\n-# Use ActiveModel has_secure_password\n-gem 'bcrypt', '~> 3.1.7'\n # Windows does not include zoneinfo files, so bundle the tzinfo-data gem\n gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]\n"
                 }
             ],
             "date": 1677405865340,

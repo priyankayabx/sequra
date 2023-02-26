@@ -1,0 +1,94 @@
+{
+    "sourceFile": "app/views/orders/_form.html.erb",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 19,
+            "patches": [
+                {
+                    "date": 1677406127034,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1677406135055,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n   <% end %>\n \n   <div class=\"field\">\n     <%= form.label :merchant_id %>\n-     <%= form.select :disbursement_frequency, [  [\"Weekly\",1], [\"Monthly\", 2] ]%>\n+     <%= form.select :disbursement_frequency, %>\n     <%= form.number_field :merchant_id %>\n   </div>\n \n   <div class=\"field\">\n"
+                },
+                {
+                    "date": 1677406202976,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n   <% end %>\n \n   <div class=\"field\">\n     <%= form.label :merchant_id %>\n-     <%= form.select :disbursement_frequency, %>\n+     <%= form.select :disbursement_frequency, options_for_select(@users.collect { | user | [user.name, user.id] }, @user.id), {}, {}%>\n     <%= form.number_field :merchant_id %>\n   </div>\n \n   <div class=\"field\">\n"
+                },
+                {
+                    "date": 1677406222897,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,8 +12,9 @@\n   <% end %>\n \n   <div class=\"field\">\n     <%= form.label :merchant_id %>\n+    \n      <%= form.select :disbursement_frequency, options_for_select(@users.collect { | user | [user.name, user.id] }, @user.id), {}, {}%>\n     <%= form.number_field :merchant_id %>\n   </div>\n \n"
+                },
+                {
+                    "date": 1677406230011,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n   <% end %>\n \n   <div class=\"field\">\n     <%= form.label :merchant_id %>\n-    \n+    <% %>\n      <%= form.select :disbursement_frequency, options_for_select(@users.collect { | user | [user.name, user.id] }, @user.id), {}, {}%>\n     <%= form.number_field :merchant_id %>\n   </div>\n \n"
+                },
+                {
+                    "date": 1677406238262,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n   <% end %>\n \n   <div class=\"field\">\n     <%= form.label :merchant_id %>\n-    <% %>\n+    <% @merchant =  %>\n      <%= form.select :disbursement_frequency, options_for_select(@users.collect { | user | [user.name, user.id] }, @user.id), {}, {}%>\n     <%= form.number_field :merchant_id %>\n   </div>\n \n"
+                },
+                {
+                    "date": 1677406248041,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,10 +12,10 @@\n   <% end %>\n \n   <div class=\"field\">\n     <%= form.label :merchant_id %>\n-    <% @merchant =  %>\n-     <%= form.select :disbursement_frequency, options_for_select(@users.collect { | user | [user.name, user.id] }, @user.id), {}, {}%>\n+    <% @merchant = Merchant.all %>\n+     <%= form.select :disbursement_frequency, options_for_select(@usersmerchant.collect { | user | [user.name, user.id] }, @user.id), {}, {}%>\n     <%= form.number_field :merchant_id %>\n   </div>\n \n   <div class=\"field\">\n"
+                },
+                {
+                    "date": 1677406255175,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,13 @@\n   <div class=\"field\">\n     <%= form.label :merchant_id %>\n     <% @merchant = Merchant.all %>\n      <%= form.select :disbursement_frequency, options_for_select(@usersmerchant.collect { | user | [user.name, user.id] }, @user.id), {}, {}%>\n-    <%= form.number_field :merchant_id %>\n+    <%\n+=begin%>\n+ <%= form.number_field :merchant_id %> \n+<%\n+=end%>\n   </div>\n \n   <div class=\"field\">\n     <%= form.label :status %>\n"
+                },
+                {
+                    "date": 1677406281107,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n \n   <div class=\"field\">\n     <%= form.label :merchant_id %>\n     <% @merchant = Merchant.all %>\n-     <%= form.select :disbursement_frequency, options_for_select(@usersmerchant.collect { | user | [user.name, user.id] }, @user.id), {}, {}%>\n+     <%= form.select :disbursement_frequency, options_for_select(@merchant.collect { | user | [user.name, user.id] }, @user.id), {}, {}%>\n     <%\n =begin%>\n  <%= form.number_field :merchant_id %> \n <%\n"
+                },
+                {
+                    "date": 1677406303402,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n \n   <div class=\"field\">\n     <%= form.label :merchant_id %>\n     <% @merchant = Merchant.all %>\n-     <%= form.select :disbursement_frequency, options_for_select(@merchant.collect { | user | [user.name, user.id] }, @user.id), {}, {}%>\n+     <%= form.select :disbursement_frequency, options_for_select(@merchant.collect { | user | [user.name, user.id] }, @merchant.id), {}, {}%>\n     <%\n =begin%>\n  <%= form.number_field :merchant_id %> \n <%\n"
+                },
+                {
+                    "date": 1677406379187,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n \n   <div class=\"field\">\n     <%= form.label :merchant_id %>\n     <% @merchant = Merchant.all %>\n-     <%= form.select :disbursement_frequency, options_for_select(@merchant.collect { | user | [user.name, user.id] }, @merchant.id), {}, {}%>\n+     <%= form.select :disbursement_frequency, @types.map { |t| [t.name, t.slug]}, {}%>\n     <%\n =begin%>\n  <%= form.number_field :merchant_id %> \n <%\n"
+                },
+                {
+                    "date": 1677406387587,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n \n   <div class=\"field\">\n     <%= form.label :merchant_id %>\n     <% @merchant = Merchant.all %>\n-     <%= form.select :disbursement_frequency, @types.map { |t| [t.name, t.slug]}, {}%>\n+     <%= form.select :disbursement_frequency, @merchant.map { |t| [t.name, t.id]}, {}%>\n     <%\n =begin%>\n  <%= form.number_field :merchant_id %> \n <%\n"
+                },
+                {
+                    "date": 1677406402857,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n   <% end %>\n \n   <div class=\"field\">\n     <%= form.label :merchant_id %>\n-    <% @merchant = Merchant.all %>\n+    <%  %>\n      <%= form.select :disbursement_frequency, @merchant.map { |t| [t.name, t.id]}, {}%>\n     <%\n =begin%>\n  <%= form.number_field :merchant_id %> \n"
+                },
+                {
+                    "date": 1677406430487,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,8 @@\n   <% end %>\n \n   <div class=\"field\">\n     <%= form.label :merchant_id %>\n-    <%  %>\n      <%= form.select :disbursement_frequency, @merchant.map { |t| [t.name, t.id]}, {}%>\n     <%\n =begin%>\n  <%= form.number_field :merchant_id %> \n"
+                },
+                {
+                    "date": 1677406437809,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,13 +13,8 @@\n \n   <div class=\"field\">\n     <%= form.label :merchant_id %>\n      <%= form.select :disbursement_frequency, @merchant.map { |t| [t.name, t.id]}, {}%>\n-    <%\n-=begin%>\n- <%= form.number_field :merchant_id %> \n-<%\n-=end%>\n   </div>\n \n   <div class=\"field\">\n     <%= form.label :status %>\n"
+                },
+                {
+                    "date": 1677406453628,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,12 +15,16 @@\n     <%= form.label :merchant_id %>\n      <%= form.select :disbursement_frequency, @merchant.map { |t| [t.name, t.id]}, {}%>\n   </div>\n \n-  <div class=\"field\">\n+  <%\n+=begin%>\n+ <div class=\"field\">\n     <%= form.label :status %>\n     <%= form.number_field :status %>\n-  </div>\n+  </div> \n+<%\n+=end%>\n \n   <div class=\"field\">\n     <%= form.label :amount %>\n     <%= form.text_field :amount %>\n"
+                },
+                {
+                    "date": 1677406459341,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,16 +15,8 @@\n     <%= form.label :merchant_id %>\n      <%= form.select :disbursement_frequency, @merchant.map { |t| [t.name, t.id]}, {}%>\n   </div>\n \n-  <%\n-=begin%>\n- <div class=\"field\">\n-    <%= form.label :status %>\n-    <%= form.number_field :status %>\n-  </div> \n-<%\n-=end%>\n \n   <div class=\"field\">\n     <%= form.label :amount %>\n     <%= form.text_field :amount %>\n"
+                },
+                {
+                    "date": 1677406498042,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,12 +21,9 @@\n     <%= form.label :amount %>\n     <%= form.text_field :amount %>\n   </div>\n \n-  <div class=\"field\">\n-    <%= form.label :comission_percentage %>\n-    <%= form.text_field :comission_percentage %>\n-  </div>\n+ \n \n   <div class=\"actions\">\n     <%= form.submit %>\n   </div>\n"
+                },
+                {
+                    "date": 1677406825260,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n   <% end %>\n \n   <div class=\"field\">\n     <%= form.label :merchant_id %>\n-     <%= form.select :disbursement_frequency, @merchant.map { |t| [t.name, t.id]}, {}%>\n+     <%= form.select :order_merchant_id, @merchant.map { |t| [t.name, t.id]}, {}%>\n   </div>\n \n \n   <div class=\"field\">\n"
+                },
+                {
+                    "date": 1677406832298,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n   <% end %>\n \n   <div class=\"field\">\n     <%= form.label :merchant_id %>\n-     <%= form.select :order_merchant_id, @merchant.map { |t| [t.name, t.id]}, {}%>\n+     <%= form.select :merchant_id, @merchant.map { |t| [t.name, t.id]}, {}%>\n   </div>\n \n \n   <div class=\"field\">\n"
+                }
+            ],
+            "date": 1677406127034,
+            "name": "Commit-0",
+            "content": "<%= form_with(model: order, local: true) do |form| %>\n  <% if order.errors.any? %>\n    <div id=\"error_explanation\">\n      <h2><%= pluralize(order.errors.count, \"error\") %> prohibited this order from being saved:</h2>\n\n      <ul>\n      <% order.errors.full_messages.each do |message| %>\n        <li><%= message %></li>\n      <% end %>\n      </ul>\n    </div>\n  <% end %>\n\n  <div class=\"field\">\n    <%= form.label :merchant_id %>\n     <%= form.select :disbursement_frequency, [  [\"Weekly\",1], [\"Monthly\", 2] ]%>\n    <%= form.number_field :merchant_id %>\n  </div>\n\n  <div class=\"field\">\n    <%= form.label :status %>\n    <%= form.number_field :status %>\n  </div>\n\n  <div class=\"field\">\n    <%= form.label :amount %>\n    <%= form.text_field :amount %>\n  </div>\n\n  <div class=\"field\">\n    <%= form.label :comission_percentage %>\n    <%= form.text_field :comission_percentage %>\n  </div>\n\n  <div class=\"actions\">\n    <%= form.submit %>\n  </div>\n<% end %>\n"
+        }
+    ]
+}

@@ -7,7 +7,7 @@
 
 <p>
   <strong>Status:</strong>
-  <%= @order.status %>
+  <%= order_status(@order.status) %>
 </p>
 
 <p>
@@ -18,6 +18,16 @@
 <p>
   <strong>Comission percentage:</strong>
   <%= @order.comission_percentage %>
+</p>
+
+<p>
+  <strong>Comission Amount:</strong>
+  <%= Order.order_amount_calculation(@order)['comission'].round(2) %>
+</p>
+
+<p>
+  <strong>Net Amount:</strong>
+  <%= Order.order_amount_calculation(@order)['net_amount'].round(2) %>
 </p>
 
 <%= link_to 'Edit', edit_order_path(@order) %> |

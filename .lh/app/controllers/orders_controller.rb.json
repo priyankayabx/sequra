@@ -1,0 +1,114 @@
+{
+    "sourceFile": "app/controllers/orders_controller.rb",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 24,
+            "patches": [
+                {
+                    "date": 1677406407245,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1677406546770,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,8 +2,9 @@\n   before_action :set_order, only: %i[ show edit update destroy ]\n \n   # GET /orders or /orders.json\n   def index\n+    res = []\n     @orders = Order.all\n   end\n \n   # GET /orders/1 or /orders/1.json\n"
+                },
+                {
+                    "date": 1677406552449,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n \n   # GET /orders or /orders.json\n   def index\n     res = []\n-    @orders = Order.all\n+    orders = Order.all\n   end\n \n   # GET /orders/1 or /orders/1.json\n   def show\n"
+                },
+                {
+                    "date": 1677406564568,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,8 +4,9 @@\n   # GET /orders or /orders.json\n   def index\n     res = []\n     orders = Order.all\n+    orders.each_with_index do \n   end\n \n   # GET /orders/1 or /orders/1.json\n   def show\n"
+                },
+                {
+                    "date": 1677406574284,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,11 @@\n   # GET /orders or /orders.json\n   def index\n     res = []\n     orders = Order.all\n-    orders.each_with_index do \n+    orders.each_with_index do |order,idx|\n+      \n+    end\n   end\n \n   # GET /orders/1 or /orders/1.json\n   def show\n"
+                },
+                {
+                    "date": 1677406581439,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n   def index\n     res = []\n     orders = Order.all\n     orders.each_with_index do |order,idx|\n-      \n+      order['']\n     end\n   end\n \n   # GET /orders/1 or /orders/1.json\n"
+                },
+                {
+                    "date": 1677406589837,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n   def index\n     res = []\n     orders = Order.all\n     orders.each_with_index do |order,idx|\n-      order['']\n+      order['merch']\n     end\n   end\n \n   # GET /orders/1 or /orders/1.json\n"
+                },
+                {
+                    "date": 1677406595485,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n   def index\n     res = []\n     orders = Order.all\n     orders.each_with_index do |order,idx|\n-      order['merch']\n+      \n     end\n   end\n \n   # GET /orders/1 or /orders/1.json\n"
+                },
+                {
+                    "date": 1677406769495,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,13 +2,9 @@\n   before_action :set_order, only: %i[ show edit update destroy ]\n \n   # GET /orders or /orders.json\n   def index\n-    res = []\n-    orders = Order.all\n-    orders.each_with_index do |order,idx|\n-      \n-    end\n+    @orders = Order.all\n   end\n \n   # GET /orders/1 or /orders/1.json\n   def show\n"
+                },
+                {
+                    "date": 1677407010036,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,8 +25,9 @@\n     @order = Order.new(order_params)\n \n     respond_to do |format|\n       if @order.save\n+        \n         format.html { redirect_to order_url(@order), notice: \"Order was successfully created.\" }\n         format.json { render :show, status: :created, location: @order }\n       else\n         format.html { render :new, status: :unprocessable_entity }\n"
+                },
+                {
+                    "date": 1677407025043,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,12 +22,13 @@\n \n   # POST /orders or /orders.json\n   def create\n     @order = Order.new(order_params)\n+    @order.status = \n+    respond_to do |format|\n \n-    respond_to do |format|\n       if @order.save\n-        \n+\n         format.html { redirect_to order_url(@order), notice: \"Order was successfully created.\" }\n         format.json { render :show, status: :created, location: @order }\n       else\n         format.html { render :new, status: :unprocessable_entity }\n"
+                },
+                {
+                    "date": 1677407414815,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,9 +22,9 @@\n \n   # POST /orders or /orders.json\n   def create\n     @order = Order.new(order_params)\n-    @order.status = \n+    @order.status = 1\n     respond_to do |format|\n \n       if @order.save\n \n"
+                },
+                {
+                    "date": 1677408031671,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,8 +23,9 @@\n   # POST /orders or /orders.json\n   def create\n     @order = Order.new(order_params)\n     @order.status = 1\n+    \n     respond_to do |format|\n \n       if @order.save\n \n"
+                },
+                {
+                    "date": 1677408037956,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,9 +23,9 @@\n   # POST /orders or /orders.json\n   def create\n     @order = Order.new(order_params)\n     @order.status = 1\n-    \n+    @order.status = \n     respond_to do |format|\n \n       if @order.save\n \n"
+                },
+                {
+                    "date": 1677408048372,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,9 +23,9 @@\n   # POST /orders or /orders.json\n   def create\n     @order = Order.new(order_params)\n     @order.status = 1\n-    @order.status = \n+    @order.comission_percentage = \n     respond_to do |format|\n \n       if @order.save\n \n"
+                },
+                {
+                    "date": 1677408094456,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,9 +23,9 @@\n   # POST /orders or /orders.json\n   def create\n     @order = Order.new(order_params)\n     @order.status = 1\n-    @order.comission_percentage = \n+    @order.comission_percentage = Merchant.\n     respond_to do |format|\n \n       if @order.save\n \n"
+                },
+                {
+                    "date": 1677408103528,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,9 +23,9 @@\n   # POST /orders or /orders.json\n   def create\n     @order = Order.new(order_params)\n     @order.status = 1\n-    @order.comission_percentage = Merchant.\n+    @order.comission_percentage = Merchant.sequra_commission_fee_structure\n     respond_to do |format|\n \n       if @order.save\n \n"
+                },
+                {
+                    "date": 1677408109117,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,9 +23,9 @@\n   # POST /orders or /orders.json\n   def create\n     @order = Order.new(order_params)\n     @order.status = 1\n-    @order.comission_percentage = Merchant.sequra_commission_fee_structure\n+    @order.comission_percentage = Merchant.sequra_commission_fee_structure(@)\n     respond_to do |format|\n \n       if @order.save\n \n"
+                },
+                {
+                    "date": 1677408273518,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,9 +23,9 @@\n   # POST /orders or /orders.json\n   def create\n     @order = Order.new(order_params)\n     @order.status = 1\n-    @order.comission_percentage = Merchant.sequra_commission_fee_structure(@)\n+    @order.comission_percentage = Merchant.sequra_commission_fee_structure(@order.amount)\n     respond_to do |format|\n \n       if @order.save\n \n"
+                },
+                {
+                    "date": 1677413780837,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,8 +23,9 @@\n   # POST /orders or /orders.json\n   def create\n     @order = Order.new(order_params)\n     @order.status = 1\n+    \n     @order.comission_percentage = Merchant.sequra_commission_fee_structure(@order.amount)\n     respond_to do |format|\n \n       if @order.save\n"
+                },
+                {
+                    "date": 1677413798725,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,9 +23,9 @@\n   # POST /orders or /orders.json\n   def create\n     @order = Order.new(order_params)\n     @order.status = 1\n-    \n+    puts \"\"\n     @order.comission_percentage = Merchant.sequra_commission_fee_structure(@order.amount)\n     respond_to do |format|\n \n       if @order.save\n"
+                },
+                {
+                    "date": 1677413807714,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,9 +23,9 @@\n   # POST /orders or /orders.json\n   def create\n     @order = Order.new(order_params)\n     @order.status = 1\n-    puts \"\"\n+    puts \"**@order.amount********\"\n     @order.comission_percentage = Merchant.sequra_commission_fee_structure(@order.amount)\n     respond_to do |format|\n \n       if @order.save\n"
+                },
+                {
+                    "date": 1677413816787,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,9 +23,9 @@\n   # POST /orders or /orders.json\n   def create\n     @order = Order.new(order_params)\n     @order.status = 1\n-    puts \"**@order.amount********\"\n+    puts \"**@order.amount********#{@order.amount}\"\n     @order.comission_percentage = Merchant.sequra_commission_fee_structure(@order.amount)\n     respond_to do |format|\n \n       if @order.save\n"
+                },
+                {
+                    "date": 1677413822498,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,8 +25,9 @@\n     @order = Order.new(order_params)\n     @order.status = 1\n     puts \"**@order.amount********#{@order.amount}\"\n     @order.comission_percentage = Merchant.sequra_commission_fee_structure(@order.amount)\n+    puts \"**@order.amount********#{@order.amount}\"\n     respond_to do |format|\n \n       if @order.save\n \n"
+                },
+                {
+                    "date": 1677413835452,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,9 +25,9 @@\n     @order = Order.new(order_params)\n     @order.status = 1\n     puts \"**@order.amount********#{@order.amount}\"\n     @order.comission_percentage = Merchant.sequra_commission_fee_structure(@order.amount)\n-    puts \"**@order.amount********#{@order.amount}\"\n+    puts \"**@order.amount********#{@order.}\"\n     respond_to do |format|\n \n       if @order.save\n \n"
+                }
+            ],
+            "date": 1677406407245,
+            "name": "Commit-0",
+            "content": "class OrdersController < ApplicationController\n  before_action :set_order, only: %i[ show edit update destroy ]\n\n  # GET /orders or /orders.json\n  def index\n    @orders = Order.all\n  end\n\n  # GET /orders/1 or /orders/1.json\n  def show\n  end\n\n  # GET /orders/new\n  def new\n    @order = Order.new\n    @merchant = Merchant.all\n  end\n\n  # GET /orders/1/edit\n  def edit\n  end\n\n  # POST /orders or /orders.json\n  def create\n    @order = Order.new(order_params)\n\n    respond_to do |format|\n      if @order.save\n        format.html { redirect_to order_url(@order), notice: \"Order was successfully created.\" }\n        format.json { render :show, status: :created, location: @order }\n      else\n        format.html { render :new, status: :unprocessable_entity }\n        format.json { render json: @order.errors, status: :unprocessable_entity }\n      end\n    end\n  end\n\n  # PATCH/PUT /orders/1 or /orders/1.json\n  def update\n    respond_to do |format|\n      if @order.update(order_params)\n        format.html { redirect_to order_url(@order), notice: \"Order was successfully updated.\" }\n        format.json { render :show, status: :ok, location: @order }\n      else\n        format.html { render :edit, status: :unprocessable_entity }\n        format.json { render json: @order.errors, status: :unprocessable_entity }\n      end\n    end\n  end\n\n  # DELETE /orders/1 or /orders/1.json\n  def destroy\n    @order.destroy\n\n    respond_to do |format|\n      format.html { redirect_to orders_url, notice: \"Order was successfully destroyed.\" }\n      format.json { head :no_content }\n    end\n  end\n\n  private\n    # Use callbacks to share common setup or constraints between actions.\n    def set_order\n      @order = Order.find(params[:id])\n    end\n\n    # Only allow a list of trusted parameters through.\n    def order_params\n      params.require(:order).permit(:merchant_id, :status, :amount, :comission_percentage)\n    end\nend\n"
+        }
+    ]
+}
