@@ -1,0 +1,38 @@
+{
+    "sourceFile": "app/views/merchants/_form.html.erb",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 5,
+            "patches": [
+                {
+                    "date": 1677400796833,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1677400804872,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,9 +27,9 @@\n   </div>\n \n   <div class=\"field\">\n     <%= form.label :disbursement_frequency %>\n-     <%= f.collection_select :provider_id, Provider.order(:name),:id,:name, include_blank: true %>\n+     <%= form.collection_select :provider_id, Provider.order(:name),:id,:name, include_blank: true %>\n     <%= form.number_field :disbursement_frequency %>\n   </div>\n \n   <div class=\"field\">\n"
+                },
+                {
+                    "date": 1677400837092,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -28,9 +28,9 @@\n \n   <div class=\"field\">\n     <%= form.label :disbursement_frequency %>\n      <%= form.collection_select :provider_id, Provider.order(:name),:id,:name, include_blank: true %>\n-    <%= form.number_field :disbursement_frequency %>\n+    <%= form.number_field :disbursement_frequency ,['option1', 'option2']%>\n   </div>\n \n   <div class=\"field\">\n     <%= form.label :live_on %>\n"
+                },
+                {
+                    "date": 1677400844011,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -28,9 +28,9 @@\n \n   <div class=\"field\">\n     <%= form.label :disbursement_frequency %>\n      <%= form.collection_select :provider_id, Provider.order(:name),:id,:name, include_blank: true %>\n-    <%= form.number_field :disbursement_frequency ,['option1', 'option2']%>\n+    <%= form.collection_select :disbursement_frequency ,['option1', 'option2']%>\n   </div>\n \n   <div class=\"field\">\n     <%= form.label :live_on %>\n"
+                },
+                {
+                    "date": 1677400869572,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,10 +27,14 @@\n   </div>\n \n   <div class=\"field\">\n     <%= form.label :disbursement_frequency %>\n-     <%= form.collection_select :provider_id, Provider.order(:name),:id,:name, include_blank: true %>\n-    <%= form.collection_select :disbursement_frequency ,['option1', 'option2']%>\n+     <%\n+=begin%>\n+ <%= form.collection_select :provider_id, Provider.order(:name),:id,:name, include_blank: true %> \n+<%\n+=end%>\n+    <%= form.select :disbursement_frequency ,['option1', 'option2']%>\n   </div>\n \n   <div class=\"field\">\n     <%= form.label :live_on %>\n"
+                },
+                {
+                    "date": 1677400882035,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -32,9 +32,9 @@\n =begin%>\n  <%= form.collection_select :provider_id, Provider.order(:name),:id,:name, include_blank: true %> \n <%\n =end%>\n-    <%= form.select :disbursement_frequency ,['W', 'option2']%>\n+    <%= form.select :disbursement_frequency ,['We', 'option2']%>\n   </div>\n \n   <div class=\"field\">\n     <%= form.label :live_on %>\n"
+                }
+            ],
+            "date": 1677400796833,
+            "name": "Commit-0",
+            "content": "<%= form_with(model: merchant, local: true) do |form| %>\n  <% if merchant.errors.any? %>\n    <div id=\"error_explanation\">\n      <h2><%= pluralize(merchant.errors.count, \"error\") %> prohibited this merchant from being saved:</h2>\n\n      <ul>\n      <% merchant.errors.full_messages.each do |message| %>\n        <li><%= message %></li>\n      <% end %>\n      </ul>\n    </div>\n  <% end %>\n\n  <div class=\"field\">\n    <%= form.label :name %>\n    <%= form.text_field :name %>\n  </div>\n\n  <div class=\"field\">\n    <%= form.label :email_id %>\n    <%= form.text_field :email_id %>\n  </div>\n\n  <div class=\"field\">\n    <%= form.label :total_commission_charged %>\n    <%= form.text_field :total_commission_charged %>\n  </div>\n\n  <div class=\"field\">\n    <%= form.label :disbursement_frequency %>\n     <%= f.collection_select :provider_id, Provider.order(:name),:id,:name, include_blank: true %>\n    <%= form.number_field :disbursement_frequency %>\n  </div>\n\n  <div class=\"field\">\n    <%= form.label :live_on %>\n    <%= form.datetime_select :live_on %>\n  </div>\n\n  <div class=\"field\">\n    <%= form.label :min_monthly_fee %>\n    <%= form.text_field :min_monthly_fee %>\n  </div>\n\n  <div class=\"field\">\n    <%= form.label :status %>\n    <%= form.check_box :status %>\n  </div>\n\n  <div class=\"actions\">\n    <%= form.submit %>\n  </div>\n<% end %>\n"
+        }
+    ]
+}

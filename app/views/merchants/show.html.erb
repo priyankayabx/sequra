@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @merchant.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @merchant.email_id %>
+</p>
+
+<p>
+  <strong>Total commission charged:</strong>
+  <%= @merchant.total_commission_charged %>
+</p>
+
+<p>
+  <strong>Disbursement frequency:</strong>
+  <%= @merchant.disbursement_frequency %>
+</p>
+
+<p>
+  <strong>Live on:</strong>
+  <%= @merchant.live_on %>
+</p>
+
+<p>
+  <strong>Min monthly fee:</strong>
+  <%= @merchant.min_monthly_fee %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @merchant.status %>
+</p>
+
+<%= link_to 'Edit', edit_merchant_path(@merchant) %> |
+<%= link_to 'Back', merchants_path %>

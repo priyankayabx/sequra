@@ -1,0 +1,64 @@
+<%= form_with(model: merchant, local: true) do |form| %>
+  <% if merchant.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(merchant.errors.count, "error") %> prohibited this merchant from being saved:</h2>
+
+      <ul>
+      <% merchant.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email_id %>
+    <%= form.text_field :email_id %>
+  </div>
+
+  <%
+=begin%>
+ <div class="field">
+    <%= form.label :total_commission_charged %>
+    <%= form.text_field :total_commission_charged ,:disabled=>true%>
+  </div> 
+<%
+=end%>
+
+  <div class="field">
+    <%= form.label :disbursement_frequency %>
+    <%= form.select :disbursement_frequency, [  ["Weekly",1], ["Monthly", 2] ]%>
+  </div>
+<%
+=begin%>
+ 
+  <div class="field">
+    <%= form.label :live_on %>
+    <%= form.datetime_select :live_on %>
+  </div> 
+<%
+=end%>
+
+  <div class="field">
+    <%= form.label :min_monthly_fee %>
+    <%= form.text_field :min_monthly_fee,:value=>Merchant::SEQURA_MONTHLY_FEE %>
+  </div>
+
+  <%
+=begin%>
+ <div class="field">
+    <%= form.label :status %>
+    <%= form.check_box :status %>
+  </div> 
+<%
+=end%>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

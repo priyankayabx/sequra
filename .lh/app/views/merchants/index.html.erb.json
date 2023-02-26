@@ -1,0 +1,38 @@
+{
+    "sourceFile": "app/views/merchants/index.html.erb",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 5,
+            "patches": [
+                {
+                    "date": 1677402297930,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1677402304332,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,9 @@\n       <tr>\n         <td><%= merchant.name %></td>\n         <td><%= merchant.email_id %></td>\n         <td><%= merchant.total_commission_charged %></td>\n-        <td><%= Merchant.Merchantmerchant.disbursement_frequency %></td>\n+        <td><%= Merchant.Merchant(merchant.disbursement_frequency) %></td>\n         <td><%= merchant.live_on %></td>\n         <td><%= merchant.min_monthly_fee %></td>\n         <td><%= merchant.status %></td>\n         <td><%= link_to 'Show', merchant %></td>\n"
+                },
+                {
+                    "date": 1677402363861,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,9 @@\n       <tr>\n         <td><%= merchant.name %></td>\n         <td><%= merchant.email_id %></td>\n         <td><%= merchant.total_commission_charged %></td>\n-        <td><%= Merchant.Merchant(merchant.disbursement_frequency) %></td>\n+        <td><%= Merchant.Merchant(merchant.disbursement_frequency %></td>\n         <td><%= merchant.live_on %></td>\n         <td><%= merchant.min_monthly_fee %></td>\n         <td><%= merchant.status %></td>\n         <td><%= link_to 'Show', merchant %></td>\n"
+                },
+                {
+                    "date": 1677402376257,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,9 @@\n       <tr>\n         <td><%= merchant.name %></td>\n         <td><%= merchant.email_id %></td>\n         <td><%= merchant.total_commission_charged %></td>\n-        <td><%= Merchant.Merchant(merchant.disbursement_frequency %></td>\n+        <td><%= Merchant.disbursement_frequency(merchant.disbursement_frequency) %></td>\n         <td><%= merchant.live_on %></td>\n         <td><%= merchant.min_monthly_fee %></td>\n         <td><%= merchant.status %></td>\n         <td><%= link_to 'Show', merchant %></td>\n"
+                },
+                {
+                    "date": 1677402387216,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,9 @@\n       <tr>\n         <td><%= merchant.name %></td>\n         <td><%= merchant.email_id %></td>\n         <td><%= merchant.total_commission_charged %></td>\n-        <td><%= Merchant.disbursement_frequency(merchant.disbursement_frequency) %></td>\n+        <td><%= Merchant.new.disbursement_frequency(merchant.disbursement_frequency) %></td>\n         <td><%= merchant.live_on %></td>\n         <td><%= merchant.min_monthly_fee %></td>\n         <td><%= merchant.status %></td>\n         <td><%= link_to 'Show', merchant %></td>\n"
+                },
+                {
+                    "date": 1677402394617,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,9 @@\n       <tr>\n         <td><%= merchant.name %></td>\n         <td><%= merchant.email_id %></td>\n         <td><%= merchant.total_commission_charged %></td>\n-        <td><%= Merchant.new.disbursement_frequency(merchant.disbursement_frequency) %></td>\n+        <td><%= Merchant.disbursement_frequency(merchant.disbursement_frequency) %></td>\n         <td><%= merchant.live_on %></td>\n         <td><%= merchant.min_monthly_fee %></td>\n         <td><%= merchant.status %></td>\n         <td><%= link_to 'Show', merchant %></td>\n"
+                }
+            ],
+            "date": 1677402297930,
+            "name": "Commit-0",
+            "content": "<p id=\"notice\"><%= notice %></p>\n\n<h1>Merchants</h1>\n\n<table>\n  <thead>\n    <tr>\n      <th>Name</th>\n      <th>Email</th>\n      <th>Total commission charged</th>\n      <th>Disbursement frequency</th>\n      <th>Live on</th>\n      <th>Min monthly fee</th>\n      <th>Status</th>\n      <th colspan=\"3\"></th>\n    </tr>\n  </thead>\n\n  <tbody>\n    <% @merchants.each do |merchant| %>\n      <tr>\n        <td><%= merchant.name %></td>\n        <td><%= merchant.email_id %></td>\n        <td><%= merchant.total_commission_charged %></td>\n        <td><%= Merchant.Merchantmerchant.disbursement_frequency %></td>\n        <td><%= merchant.live_on %></td>\n        <td><%= merchant.min_monthly_fee %></td>\n        <td><%= merchant.status %></td>\n        <td><%= link_to 'Show', merchant %></td>\n        <td><%= link_to 'Edit', edit_merchant_path(merchant) %></td>\n        <td><%= link_to 'Destroy', merchant, method: :delete, data: { confirm: 'Are you sure?' } %></td>\n      </tr>\n    <% end %>\n  </tbody>\n</table>\n\n<br>\n\n<%= link_to 'New Merchant', new_merchant_path %>\n"
+        }
+    ]
+}

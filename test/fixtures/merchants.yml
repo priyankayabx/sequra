@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  email_id: MyString
+  total_commission_charged: 1.5
+  disbursement_frequency: 1
+  live_on: 2023-02-26 14:05:11
+  min_monthly_fee: 1.5
+  status: false
+
+two:
+  name: MyString
+  email_id: MyString
+  total_commission_charged: 1.5
+  disbursement_frequency: 1
+  live_on: 2023-02-26 14:05:11
+  min_monthly_fee: 1.5
+  status: false

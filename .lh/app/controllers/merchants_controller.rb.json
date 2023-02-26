@@ -1,0 +1,30 @@
+{
+    "sourceFile": "app/controllers/merchants_controller.rb",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1677401287796,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1677401297195,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,8 +2,9 @@\n   before_action :set_merchant, only: %i[ show edit update destroy ]\n \n   # GET /merchants or /merchants.json\n   def index\n+    merchants = Merchant.all\n     \n     @merchants = Merchant.all\n   end\n \n"
+                },
+                {
+                    "date": 1677401303914,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,10 +2,11 @@\n   before_action :set_merchant, only: %i[ show edit update destroy ]\n \n   # GET /merchants or /merchants.json\n   def index\n+    res = []\n     merchants = Merchant.all\n-    \n+\n     @merchants = Merchant.all\n   end\n \n   # GET /merchants/1 or /merchants/1.json\n"
+                },
+                {
+                    "date": 1677401310388,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n   # GET /merchants or /merchants.json\n   def index\n     res = []\n     merchants = Merchant.all\n-    merchants.each\n+    merchants.each_\n     @merchants = Merchant.all\n   end\n \n   # GET /merchants/1 or /merchants/1.json\n"
+                }
+            ],
+            "date": 1677401287796,
+            "name": "Commit-0",
+            "content": "class MerchantsController < ApplicationController\n  before_action :set_merchant, only: %i[ show edit update destroy ]\n\n  # GET /merchants or /merchants.json\n  def index\n    \n    @merchants = Merchant.all\n  end\n\n  # GET /merchants/1 or /merchants/1.json\n  def show\n  end\n\n  # GET /merchants/new\n  def new\n    @merchant = Merchant.new\n  end\n\n  # GET /merchants/1/edit\n  def edit\n  end\n\n  # POST /merchants or /merchants.json\n  def create\n    @merchant = Merchant.new(merchant_params)\n\n    respond_to do |format|\n      if @merchant.save\n        format.html { redirect_to merchant_url(@merchant), notice: \"Merchant was successfully created.\" }\n        format.json { render :show, status: :created, location: @merchant }\n      else\n        format.html { render :new, status: :unprocessable_entity }\n        format.json { render json: @merchant.errors, status: :unprocessable_entity }\n      end\n    end\n  end\n\n  # PATCH/PUT /merchants/1 or /merchants/1.json\n  def update\n    respond_to do |format|\n      if @merchant.update(merchant_params)\n        format.html { redirect_to merchant_url(@merchant), notice: \"Merchant was successfully updated.\" }\n        format.json { render :show, status: :ok, location: @merchant }\n      else\n        format.html { render :edit, status: :unprocessable_entity }\n        format.json { render json: @merchant.errors, status: :unprocessable_entity }\n      end\n    end\n  end\n\n  # DELETE /merchants/1 or /merchants/1.json\n  def destroy\n    @merchant.destroy\n\n    respond_to do |format|\n      format.html { redirect_to merchants_url, notice: \"Merchant was successfully destroyed.\" }\n      format.json { head :no_content }\n    end\n  end\n\n  private\n    # Use callbacks to share common setup or constraints between actions.\n    def set_merchant\n      @merchant = Merchant.find(params[:id])\n    end\n\n    # Only allow a list of trusted parameters through.\n    def merchant_params\n      params.require(:merchant).permit(:name, :email_id, :total_commission_charged, :disbursement_frequency, :live_on, :min_monthly_fee, :status)\n    end\nend\n"
+        }
+    ]
+}

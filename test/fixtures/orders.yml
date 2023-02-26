@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  merchant_id: 1
+  status: 1
+  amount: 1.5
+  comission_percentage: 1.5
+
+two:
+  merchant_id: 1
+  status: 1
+  amount: 1.5
+  comission_percentage: 1.5
