@@ -2,7 +2,12 @@
 
 <p>
   <strong>Merchant:</strong>
-  <%= @order.merchant_id %>
+  <%= @order.order_refrence_no %>
+</p>
+
+<p>
+  <strong>Merchant:</strong>
+  <%= @order.merchant.name %>
 </p>
 
 <p>
@@ -22,12 +27,12 @@
 
 <p>
   <strong>Comission Amount:</strong>
-  <%= Order.order_amount_calculation(@order)['comission'].round(2) %>
+  <%= @order.sequra_commission_amount.to_f.round(2) %>
 </p>
 
 <p>
   <strong>Net Amount:</strong>
-  <%= Order.order_amount_calculation(@order)['net_amount'].round(2) %>
+  <%= @order.merchant_received_amount.to_f.round(2) %>
 </p>
 
 <%= link_to 'Edit', edit_order_path(@order) %> |

@@ -22,34 +22,40 @@ class OrdersController < ApplicationController
 
   # POST /orders or /orders.json
   def create
-    @order = Order.new(order_params)
-    @order.status = 1
-    puts "**@order.amount********#{@order.amount}"
-    @order.comission_percentage = Merchant.sequra_commission_fee_structure(@order.amount)
-    puts "**@order.comission_percentage********#{@order.comission_percentage}"
-    respond_to do |format|
+    begin
+        @order = Order.new(order_params)
+        @order.status = 1
+        @order.order_refrence_no=SecureRandom.uuid
+        @order.comission_percentage = Merchant.sequra_commission_fee_structure(@order.amount)
+        respond_to do |format|
 
-      if @order.save
-
-        format.html { redirect_to order_url(@order), notice: "Order was successfully created." }
-        format.json { render :show, status: :created, location: @order }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
+          if @order.save
+            format.html { redirect_to order_url(@order), notice: "Order was successfully created." }
+            format.json { render :show, status: :created, location: @order }
+          else
+            format.html { render :new, status: :unprocessable_entity }
+            format.json { render json: @order.errors, status: :unprocessable_entity }
+          end
+        end
+      rescue Exception => e
+        error     = "#{e.class.to_s}: #{e.message}"
       end
-    end
   end
 
   # PATCH/PUT /orders/1 or /orders/1.json
   def update
-    respond_to do |format|
-      if @order.update(order_params)
-        format.html { redirect_to order_url(@order), notice: "Order was successfully updated." }
-        format.json { render :show, status: :ok, location: @order }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
+    begin
+      respond_to do |format|
+        if @order.update(order_params)
+          format.html { redirect_to order_url(@order), notice: "Order was successfully updated." }
+          format.json { render :show, status: :ok, location: @order }
+        else
+          format.html { render :edit, status: :unprocessable_entity }
+          format.json { render json: @order.errors, status: :unprocessable_entity }
+        end
       end
+    rescue Exception => e
+      error     = "#{e.class.to_s}: #{e.message}"
     end
   end
 

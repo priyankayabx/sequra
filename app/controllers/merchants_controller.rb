@@ -22,19 +22,24 @@ class MerchantsController < ApplicationController
 
   # POST /merchants or /merchants.json
   def create
-    @merchant = Merchant.new(merchant_params)
-    
-    respond_to do |format|
-      if @merchant.save
-        @merchant.total_commission_charged = total_commission_charged(@merchant.id)
-        @merchant.live_on = @merchant.created_at
-        @merchant.save
-        format.html { redirect_to merchant_url(@merchant), notice: "Merchant was successfully created." }
-        format.json { render :show, status: :created, location: @merchant }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @merchant.errors, status: :unprocessable_entity }
+    begin
+      @merchant = Merchant.new(merchant_params)
+      
+      respond_to do |format|
+        if @merchant.save
+          @merchant.total_commission_charged = total_commission_charged(@merchant.id)
+          @merchant.live_on = @merchant.created_at
+          @merchant.status=1
+          @merchant.save
+          format.html { redirect_to merchant_url(@merchant), notice: "Merchant was successfully created." }
+          format.json { render :show, status: :created, location: @merchant }
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @merchant.errors, status: :unprocessable_entity }
+        end
       end
+    rescue Exception => e
+      error     = "#{e.class.to_s}: #{e.message}"
     end
   end
 
@@ -59,6 +64,10 @@ class MerchantsController < ApplicationController
       format.html { redirect_to merchants_url, notice: "Merchant was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def disbursement_day
+    
   end
 
   private

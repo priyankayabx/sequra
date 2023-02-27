@@ -10,14 +10,11 @@
   <%= @merchant.email_id %>
 </p>
 
-<p>
-  <strong>Total commission charged:</strong>
-  <%= @merchant.total_commission_charged %>
-</p>
+
 
 <p>
   <strong>Disbursement frequency:</strong>
-  <%= @merchant.disbursement_frequency %>
+  <%= Merchant.disbursement_frequency(@merchant.disbursement_frequency) %>
 </p>
 
 <p>
@@ -32,7 +29,7 @@
 
 <p>
   <strong>Status:</strong>
-  <%= @merchant.status %>
+  <%= @merchant.status == true ? "Active" : "Inactive" %>
 </p>
 
 <%= link_to 'Edit', edit_merchant_path(@merchant) %> |

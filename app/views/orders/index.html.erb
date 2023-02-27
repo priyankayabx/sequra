@@ -1,29 +1,39 @@
-<p id="notice"><%= notice %></p>
+<p id="notice">Download CSV<%= notice %></p>
 
 <h1>Orders</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Merchant</th>
+    <th>Order Id</th>
+    <th>Order Refrence Number</th>
+      <th>Merchant Email ID</th>
+      <th>Live ON</th>
+      <th>Disbursement Frequency</th>
+      <th>Minimum Monthly Fee</th>
       <th>Status</th>
       <th>Amount</th>
       <th>Comission percentage</th>
       <th>Comission Amount</th>
       <th>Net Amount</th>
-      <th colspan="3"></th>
+      <th colspan="3">Action</th>
     </tr>
   </thead>
 
   <tbody>
     <% @orders.each do |order| %>
       <tr>
-        <td><%= order.merchant.name %></td>
+      <td><%= order.id %></td>
+      <td><%= order.order_refrence_no%></td>
+        <td><%= order.merchant.email_id %></td>
+        <td><%= order.merchant.created_at.to_date %></td>
+        <td><%= Merchant.disbursement_frequency(order.merchant.disbursement_frequency) %></td>
+        <td><%= order.merchant.min_monthly_fee%></td>
         <td><%= order_status(order.status) %></td>
         <td><%= order.amount %></td>
         <td><%= order.comission_percentage %></td>
-        <td><%= Order.order_amount_calculation(order)['comission'].round(2) %></td>
-        <td><%=  Order.order_amount_calculation(order)['net_amount'].round(2) %></td>
+        <td><%= order.sequra_commission_amount %></td>
+        <td><%= order.merchant_received_amount %></td>
         <td><%= link_to 'Show', order %></td>
         <td><%= link_to 'Edit', edit_order_path(order) %></td>
         <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -35,3 +45,4 @@
 <br>
 
 <%= link_to 'New Order', new_order_path %>
+
