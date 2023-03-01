@@ -1,16 +1,21 @@
-class DailyDisbursementJob > ApplicationJob
-    @queue = :default
+class DailyDisbursementJob 
+    @queue = :DailyDisbursementJob
     def self.perform()
       begin
-        today_date = Time.now.strftime("%Y-%m-%d 07:59:00")
-        yesterday_date = (Time.now - 1.days).strftime("%Y-%m-%d 08:00:00")
+        # 1=Mon, 2=Tue, 3=Wed, 4=Thu 5=Fri, 6=Sat 7=Sun
+        current_day = Time.now.wday 
        
-        orders = Order.where("created_at BETWEEN '#{yesterday_date}' and '#{today_date}' and status=1")
-        orders.each_with_index do |order,idx|
-          order.merchant_received_amount = Order.order_amount_calculation(order)['net_amount'].round(2)
-          order.sequra_commission_amount = Order.order_amount_calculation(order)['comission'].round(2)
-          order.status = 2
-          order.save!
+       customers = Merchant.where("status=1 and WEEKDAY(DATE(live_on)) = #{current_day}-1 ")
+        orders = Order.where("DATE(created_at) = '#{today_date}'and status=1")
+        customers.each_with_index do |customer,idx|
+            orders = customer.orders
+            if orders.present?
+                orders.each_with_index do |order,idx|
+                    order.status = 2 #disbursed order
+                    order.save!
+                end
+            end
+           
         end
       rescue Exception => e
         error     = "[DailyDisbursementJob]:#{e.class.to_s}: #{e.message}"

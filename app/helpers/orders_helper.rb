@@ -7,7 +7,7 @@ module OrdersHelper
             shown_order_status = "Order Disbursed"
             
         elsif order_status == 3
-            shown_order_status = "Order Completed"
+            shown_order_status = "Order Disburse Calculated"
         elsif order_status == 4
             shown_order_status = "Order Closed"
         elsif order_status == 5
